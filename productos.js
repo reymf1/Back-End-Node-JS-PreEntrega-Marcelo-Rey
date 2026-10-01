@@ -1,5 +1,8 @@
+import { requerimiento, request } from "./request.js";
+
 export async function obtenerProducto(ruta) {
   try {
+    const data = await request(`${urlBase}/${recurso}/${id}`);
     const url = `https://fakestoreapi.com/${ruta}`;
     const response = await fetch(url); //Devuelve la promesa
 
@@ -18,6 +21,7 @@ export async function obtenerProducto(ruta) {
 
 export async function agregarProducto(titulo, precio, categoria) {
   try {
+    [titulo, precio, categoria] = argumentos;
     const producto = {
       title: titulo,
       price: Number(precio),
